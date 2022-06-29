@@ -12,10 +12,10 @@ dotenv.config();
 
 const networks: any = {};
 if (process.env.PRIVATE_KEY) {
-  networks['autobahn-canary'] = {
-    url: 'https://rpc.autobahn.network',
-    accounts: [`0x${process.env.PRIVATE_KEY}`]
-  }
+  networks["autobahn-canary"] = {
+    url: "https://rpc.autobahn.network",
+    accounts: [`0x${process.env.PRIVATE_KEY}`],
+  };
 }
 
 const config: HardhatUserConfig = {
