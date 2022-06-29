@@ -24,6 +24,7 @@ contract TestERC1155 is ERC1155, Ownable, ERC1155Supply {
         amounts[2] = 10;
 
         mintBatch(msg.sender, ids, amounts, "");
+        mint(msg.sender, 4, 1, "");
     }
 
     function setURI(string memory newuri) public onlyOwner {
