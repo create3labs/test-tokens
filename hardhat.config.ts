@@ -16,6 +16,10 @@ if (process.env.PRIVATE_KEY) {
     url: "https://rpc.autobahn.network",
     accounts: [`0x${process.env.PRIVATE_KEY}`],
   };
+  networks.gnosis = {
+    url: "https://rpc.ankr.com/gnosis",
+    accounts: [`0x${process.env.PRIVATE_KEY}`],
+  };
 }
 
 const config: HardhatUserConfig = {
