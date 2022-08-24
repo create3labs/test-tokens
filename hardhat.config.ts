@@ -19,6 +19,7 @@ if (process.env.PRIVATE_KEY) {
   networks.gnosis = {
     url: "https://rpc.ankr.com/gnosis",
     accounts: [`0x${process.env.PRIVATE_KEY}`],
+    gasPrice: process.env.GAS_PRICE,
   };
 }
 
