@@ -5,6 +5,8 @@ import "@nomiclabs/hardhat-waffle";
 const TEST_TRANSFER_RECEIVER = "0x000000000000000000000000000000000000dEaD";
 
 task("deploy", "Deploys a test token", async (args: any, hre) => {
+  await hre.run("compile");
+
   const signers = await hre.ethers.getSigners();
 
   const TestToken = await hre.ethers.getContractFactory(
