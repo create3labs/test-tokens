@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/autobahn-network/test-tokens.git"
+    "url": "git+https://github.com/create3labs/test-tokens.git"
   },
-  "author": "",
+  "author": "create3labs",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/autobahn-network/test-tokens/issues"
+    "url": "https://github.com/create3labs/test-tokens/issues"
   },
-  "homepage": "https://github.com/autobahn-network/test-tokens#readme",
+  "homepage": "https://github.com/create3labs/test-tokens#readme",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-etherscan": "^3.1.0",
