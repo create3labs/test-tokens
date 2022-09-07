@@ -13,13 +13,12 @@ task("deploy", "Deploys a test token", async (args: any, hre) => {
     `Test${args.type.toUpperCase()}`
   );
 
-  let constructorArgs = [args.name, args.symbol];
+  const constructorArgs = [args.name, args.symbol];
   if (args.type === "erc721" || args.type === "erc721a") {
     constructorArgs.push(args.publicMintEnabled);
     constructorArgs.push(args.baseUri);
   }
 
-  console.log(constructorArgs);
   const testToken = await TestToken.deploy(...constructorArgs);
   await testToken.deployed();
 
@@ -75,7 +74,7 @@ task("deploy", "Deploys a test token", async (args: any, hre) => {
 })
   .addParam("name", "The name of the token")
   .addParam("symbol", "The symbol of the token")
-  .addParam("type", "The token type <erc20|erc721|erc1155>")
+  .addParam("type", "The token type <erc20|erc721|erc721a|erc1155>")
   .addOptionalParam(
     "publicMintEnabled",
     "For NFTs: Set true if mint should be public",

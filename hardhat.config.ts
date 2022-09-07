@@ -6,7 +6,7 @@ import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
-import "./tasks/deploy";
+import "./tasks";
 
 dotenv.config();
 
@@ -31,7 +31,19 @@ const config: HardhatUserConfig = {
     currency: "USD",
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY || "abc",
+    apiKey: {
+      gnosis: process.env.ETHERSCAN_API_KEY,
+    },
+    customChains: [
+      {
+        network: "gnosis",
+        chainId: 100,
+        urls: {
+          apiURL: "https://api.gnosisscan.io/api",
+          browserURL: "https://gnosisscan.io/",
+        },
+      },
+    ],
   },
 };
 

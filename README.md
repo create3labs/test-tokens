@@ -17,3 +17,6 @@ Type can be one of:
 - `erc20`
 - `erc721`
 - `erc1155`
+- `erc721a`
+
+You can also run `npx hardhat help deploy` to get more info about the deploy command.

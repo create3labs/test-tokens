@@ -19,7 +19,7 @@ contract TestERC721A is ERC721A, Ownable {
         mint(10);
     }
 
-    function mint(uint256 quantity) public payable {
+    function mint(uint256 quantity) public {
         if (!publicMintEnabled) {
             require(msg.sender == owner(), "TestERC721A: Public mint disabled");
         }
