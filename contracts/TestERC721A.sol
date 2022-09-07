@@ -1,16 +1,11 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract TestERC721 is ERC721, Ownable {
-    using Counters for Counters.Counter;
-
+contract TestERC721A is ERC721A, Ownable {
     bool public publicMintEnabled;
 
-    Counters.Counter private _tokenIdCounter;
     string private _baseUri;
 
     constructor(
@@ -18,21 +13,17 @@ contract TestERC721 is ERC721, Ownable {
         string memory symbol,
         bool _publicMintEnabled,
         string memory __baseUri
-    ) ERC721(name, symbol) {
+    ) ERC721A(name, symbol) {
         _baseUri = __baseUri;
         publicMintEnabled = _publicMintEnabled;
-        for (uint8 i = 0; i < 10; i++) {
-            mint(msg.sender);
-        }
+        mint(10);
     }
 
-    function mint(address to) public {
+    function mint(uint256 quantity) public payable {
         if (!publicMintEnabled) {
-            require(msg.sender == owner(), "TestERC721: Public mint disabled");
+            require(msg.sender == owner(), "TestERC721A: Public mint disabled");
         }
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
-        _safeMint(to, tokenId);
+        _mint(msg.sender, quantity);
     }
 
     /**
