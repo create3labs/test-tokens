@@ -8,6 +8,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract TestERC721 is ERC721, Ownable {
     using Counters for Counters.Counter;
 
+    uint256 public constant CAP = 10000;
+
     bool public publicMintEnabled;
 
     Counters.Counter private _tokenIdCounter;
@@ -30,7 +32,16 @@ contract TestERC721 is ERC721, Ownable {
         if (!publicMintEnabled) {
             require(msg.sender == owner(), "TestERC721: Public mint disabled");
         }
+        _mint(to);
+    }
+
+    function ownerMint(address to) public onlyOwner {
+        _mint(to);
+    }
+
+    function _mint(address to) private {
         uint256 tokenId = _tokenIdCounter.current();
+        require(tokenId < CAP, "TestERC721: Cap reached");
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
     }

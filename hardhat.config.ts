@@ -12,8 +12,8 @@ dotenv.config();
 
 const networks: any = {};
 if (process.env.PRIVATE_KEY) {
-  networks["autobahn-canary"] = {
-    url: "https://rpc.autobahn.network",
+  networks["autobahn-network"] = {
+    url: "https://autobahn-rpc.rocknitive.com",
     accounts: [`0x${process.env.PRIVATE_KEY}`],
   };
   networks.gnosis = {
