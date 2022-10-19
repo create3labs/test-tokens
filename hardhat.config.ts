@@ -12,8 +12,8 @@ dotenv.config();
 
 const networks: any = {};
 if (process.env.PRIVATE_KEY) {
-  networks["autobahn-network"] = {
-    url: "https://autobahn-rpc.rocknitive.com",
+  networks.autobahn = {
+    url: "https://autobahn-rpc.com",
     accounts: [`0x${process.env.PRIVATE_KEY}`],
   };
   networks.gnosis = {
@@ -32,6 +32,7 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
+      autobahn: "abc", // no API key needed
       gnosis: process.env.ETHERSCAN_API_KEY,
     },
     customChains: [
@@ -41,6 +42,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api.gnosisscan.io/api",
           browserURL: "https://gnosisscan.io/",
+        },
+      },
+      {
+        network: "autobahn",
+        chainId: 45000,
+        urls: {
+          apiURL: "https://api.autobahn-explorer.com/api",
+          browserURL: "https://autobahn-explorer.com",
         },
       },
     ],
